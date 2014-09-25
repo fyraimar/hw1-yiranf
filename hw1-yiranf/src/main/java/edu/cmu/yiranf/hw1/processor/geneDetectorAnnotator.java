@@ -42,7 +42,7 @@ public class geneDetectorAnnotator extends JCasAnnotator_ImplBase {
       while (it.hasNext()) {
         Map.Entry<Integer, Integer> pairs = (Map.Entry<Integer, Integer>)it.next();
         GeneType annotation = new GeneType(aJCas);
-        
+
         annotation.setSt((Integer)pairs.getKey());
         annotation.setEd((Integer)pairs.getValue());
         annotation.addToIndexes();

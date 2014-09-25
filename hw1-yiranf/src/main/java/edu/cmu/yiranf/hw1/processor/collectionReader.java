@@ -54,9 +54,6 @@ public class collectionReader extends CollectionReader_ImplBase {
   private ArrayList<String> mSentences;
   private int mCurrentIndex;
 
-  /**
-   * @see org.apache.uima.collection.CollectionReader_ImplBase#initialize()
-   */
   public void initialize() throws ResourceInitializationException {
     mSentences = new ArrayList<String>();
     BufferedReader br;
@@ -80,16 +77,10 @@ public class collectionReader extends CollectionReader_ImplBase {
     mCurrentIndex = 0;
   }
 
-  /**
-   * @see org.apache.uima.collection.CollectionReader#hasNext()
-   */
   public boolean hasNext() {
     return mCurrentIndex < mSentences.size();
   }
 
-  /**
-   * @see org.apache.uima.collection.CollectionReader#getNext(org.apache.uima.cas.CAS)
-   */
   public void getNext(CAS aCAS) throws IOException, CollectionException {
     JCas jcas;
     try {
@@ -109,25 +100,13 @@ public class collectionReader extends CollectionReader_ImplBase {
     st.addToIndexes();
   }
 
-  /**
-   * @see org.apache.uima.collection.base_cpm.BaseCollectionReader#close()
-   */
   public void close() throws IOException {
   }
 
-  /**
-   * @see org.apache.uima.collection.base_cpm.BaseCollectionReader#getProgress()
-   */
   public Progress[] getProgress() {
     return new Progress[] { new ProgressImpl(mCurrentIndex, mSentences.size(), Progress.ENTITIES) };
   }
 
-  /**
-   * Gets the total number of documents that will be returned by this collection reader. This is not
-   * part of the general collection reader interface.
-   * 
-   * @return the number of documents in the collection
-   */
   public int getNumberOfDocuments() {
     return mSentences.size();
   }
